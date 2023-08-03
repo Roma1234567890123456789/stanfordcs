@@ -76,7 +76,6 @@ struct ThemeButton: View {
                 .aspectRatio(contentMode: .fit)
                 .font(.largeTitle)
                 .foregroundColor(color)
-
         })
         
     }
