@@ -21,7 +21,7 @@ struct ContentView: View {
                             viewModel.choose(card)
                         }
                 }
-                .foregroundColor(.red)
+                .foregroundColor(viewModel.currentTheme.color)
                 Spacer(minLength: 50)
             }
 
@@ -33,7 +33,7 @@ struct ContentView: View {
                 ThemeButton(theme: "planes", color: .orange, systemName: "airplane.circle", numberOfPairs: 8, cardColor: .orange, viewModel: viewModel)
                 ThemeButton(theme: "ships", color: .yellow, systemName: "sailboat.circle", numberOfPairs: 8, cardColor: .yellow, viewModel: viewModel)
                 ThemeButton(theme: "animals", color: .green, systemName: "pawprint.circle", numberOfPairs: 8, cardColor: .green, viewModel: viewModel)
-                ThemeButton(theme: "reptiles", color: .blue, systemName: "sun.max.circle", numberOfPairs: 8, cardColor: .blue, viewModel: viewModel)
+                ThemeButton(theme: "reptiles", color: .blue, systemName: "sun.max.circle", numberOfPairs: 8, cardColor: .cyan, viewModel: viewModel)
                 ThemeButton(theme: "fishes", color: .blue, systemName: "fish.circle", numberOfPairs: 8, cardColor: .blue, viewModel: viewModel)
                 ThemeButton(theme: "moon", color: .purple, systemName: "moon.circle", numberOfPairs: 8, cardColor: .purple, viewModel: viewModel)
 
