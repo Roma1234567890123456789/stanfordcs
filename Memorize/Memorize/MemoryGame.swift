@@ -12,12 +12,13 @@ import SwiftUI
 struct MemoryGame<CardContent> where CardContent: Equatable {
 
     private(set) var cards: Array<Card>
-
-    private var indexOfTheOneAndOnlyFaceUpCard: Int?
     
+    private var indexOfTheOneAndOnlyFaceUpCard: Int?
 
     mutating func choose(_ card: Card) {
-
+        // if cards don't match, deduct 5 points
+        // if cards match, add 15 point
+        
         if let chosenIndex = cards.firstIndex(where: { $0.id == card.id }),
            !cards[chosenIndex].isFaceUp,
            !cards[chosenIndex].isMatched {
@@ -37,7 +38,6 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
         }
 
         print("\(cards)")
-
     }
 
 
