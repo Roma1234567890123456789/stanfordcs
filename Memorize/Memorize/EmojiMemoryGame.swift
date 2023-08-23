@@ -9,6 +9,7 @@ import SwiftUI
 
 class EmojiMemoryGame: ObservableObject {
 
+    // TODO: Remove below function
     static func createEmojis(theme: String) -> [String] {
         switch theme {
             case "cars":
@@ -30,15 +31,15 @@ class EmojiMemoryGame: ObservableObject {
         }
     }
 
-    static func newGame(theme: String, numberOfPairs: Int, cardColor: Color) -> MemoryGame<String> {
-        let emojis = createEmojis(theme: theme)
+    static func newGame(themeName: String, numberOfPairs: Int, cardColor: Color) -> MemoryGame<String> {
+        let emojis = createEmojis(theme: themeName)
         return MemoryGame<String>(numberOfPairsOfCards: numberOfPairs, cardColor: cardColor)
         { pairIndex in
             emojis[pairIndex]
         }
     }
 
-    @Published var model: MemoryGame<String> = newGame(theme: "cars", numberOfPairs: 8, cardColor: .red)
+    @Published var model: MemoryGame<String> = newGame(themeName: "cars", numberOfPairs: 8, cardColor: .red)
     
 
     var cards: Array<MemoryGame<String>.Card> {

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C6E8C3B2A9639C700591A51 /* GameTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6E8C3A2A9639C700591A51 /* GameTheme.swift */; };
+		4C6E8C3D2A9639EB00591A51 /* ThemeSelectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6E8C3C2A9639EB00591A51 /* ThemeSelectionButton.swift */; };
 		E01A8DCD2A5C4A9A00110383 /* MemorizeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01A8DCC2A5C4A9A00110383 /* MemorizeApp.swift */; };
 		E01A8DCF2A5C4A9A00110383 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01A8DCE2A5C4A9A00110383 /* ContentView.swift */; };
 		E01A8DD12A5C4A9D00110383 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E01A8DD02A5C4A9D00110383 /* Assets.xcassets */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C6E8C3A2A9639C700591A51 /* GameTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTheme.swift; sourceTree = "<group>"; };
+		4C6E8C3C2A9639EB00591A51 /* ThemeSelectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSelectionButton.swift; sourceTree = "<group>"; };
 		E01A8DC92A5C4A9A00110383 /* Memorize.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memorize.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E01A8DCC2A5C4A9A00110383 /* MemorizeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorizeApp.swift; sourceTree = "<group>"; };
 		E01A8DCE2A5C4A9A00110383 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -61,6 +65,8 @@
 				E01A8DCE2A5C4A9A00110383 /* ContentView.swift */,
 				E01A8DD02A5C4A9D00110383 /* Assets.xcassets */,
 				E01A8DD22A5C4A9D00110383 /* Preview Content */,
+				4C6E8C3A2A9639C700591A51 /* GameTheme.swift */,
+				4C6E8C3C2A9639EB00591A51 /* ThemeSelectionButton.swift */,
 			);
 			path = Memorize;
 			sourceTree = "<group>";
@@ -143,7 +149,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C6E8C3D2A9639EB00591A51 /* ThemeSelectionButton.swift in Sources */,
 				E01A8DCF2A5C4A9A00110383 /* ContentView.swift in Sources */,
+				4C6E8C3B2A9639C700591A51 /* GameTheme.swift in Sources */,
 				E0E034B12A6D482A00A7B139 /* MemoryGame.swift in Sources */,
 				E01A8DCD2A5C4A9A00110383 /* MemorizeApp.swift in Sources */,
 				E0E034B32A6D4E5400A7B139 /* EmojiMemoryGame.swift in Sources */,

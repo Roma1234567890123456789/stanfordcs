@@ -50,36 +50,13 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
             cards.append(Card(content: content, id: pairIndex*2+1, cardColor: cardColor))
         }
     }
-
+    
     struct Card: Identifiable {
         var isFaceUp: Bool = false
         var isMatched: Bool = false
         var content: CardContent
         var id: Int
         var cardColor: Color
-    }
-}
-
-struct ThemeCards: View {
-    var theme: String
-    var buttonColor: Color
-    var systemName: String
-    var numberOfPairs: Int
-    var cardColor: Color
-    @ObservedObject var viewModel: EmojiMemoryGame
-
-    var body: some View {
-        Button(action: {
-            viewModel.model = EmojiMemoryGame.newGame(theme: theme, numberOfPairs: numberOfPairs, cardColor: cardColor)
-        }, label: {
-            
-            Image(systemName: systemName)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .font(.largeTitle)
-                .foregroundColor(buttonColor)
-        })
-        
     }
 }
 

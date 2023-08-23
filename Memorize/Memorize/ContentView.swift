@@ -48,13 +48,13 @@ struct ContentView: View {
                 .bold()
             
             HStack {
-                ThemeCards(theme: "cars", buttonColor: .red, systemName: "car.circle", numberOfPairs: 4, cardColor: .red, viewModel: viewModel)
-                ThemeCards(theme: "planes", buttonColor: .orange, systemName: "airplane.circle", numberOfPairs: 6, cardColor: .orange, viewModel: viewModel)
-                ThemeCards(theme: "ships", buttonColor: .yellow, systemName: "sailboat.circle", numberOfPairs: 8, cardColor: .yellow, viewModel: viewModel)
-                ThemeCards(theme: "animals", buttonColor: .green, systemName: "pawprint.circle", numberOfPairs: 4, cardColor: .green, viewModel: viewModel)
-                ThemeCards(theme: "reptiles", buttonColor: .mint, systemName: "sun.max.circle", numberOfPairs: 6, cardColor: .mint, viewModel: viewModel)
-                ThemeCards(theme: "fishes", buttonColor: .blue, systemName: "fish.circle", numberOfPairs: 8, cardColor: .blue, viewModel: viewModel)
-                ThemeCards(theme: "moon", buttonColor: .purple, systemName: "moon.circle", numberOfPairs: 4, cardColor: .purple, viewModel: viewModel)
+                ThemeSelectionButton(theme: GameTheme(name: "cars", numberOfPairsOfCards: 4, cardColor: .red, symbolName: "car.circle"), viewModel: viewModel)
+                ThemeSelectionButton(theme: GameTheme(name: "ships", numberOfPairsOfCards: 6, cardColor: .blue, symbolName: "sailboat.circle"), viewModel: viewModel)
+                ThemeSelectionButton(theme: GameTheme(name: "planes", numberOfPairsOfCards: 8, cardColor: .orange, symbolName: "airplane.circle"), viewModel: viewModel)
+                ThemeSelectionButton(theme: GameTheme(name: "animals", numberOfPairsOfCards: 6, cardColor: .green, symbolName: "pawprint.circle"), viewModel: viewModel)
+//                ThemeSelectionButton(theme: "reptiles", buttonColor: .mint, systemName: "sun.max.circle", numberOfPairs: 6, cardColor: .mint, viewModel: viewModel)
+//                ThemeSelectionButton(theme: "fishes", buttonColor: .blue, systemName: "fish.circle", numberOfPairs: 8, cardColor: .blue, viewModel: viewModel)
+//                ThemeSelectionButton(theme: "moon", buttonColor: .purple, systemName: "moon.circle", numberOfPairs: 4, cardColor: .purple, viewModel: viewModel)
             }
             .padding(.horizontal)
         }
