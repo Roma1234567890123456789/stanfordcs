@@ -41,13 +41,13 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
     }
 
 
-    init(numberOfPairsOfCards: Int, createCardContent: (Int) -> CardContent) {
+    init(numberOfPairsOfCards: Int, cardColor: Color, createCardContent: (Int) -> CardContent) {
         cards = Array<Card>()
         // add numberOfPairsOfCards x 2 cards to cards array
         for pairIndex in 0..<numberOfPairsOfCards {
             let content = createCardContent(pairIndex)
-            cards.append(Card(content: content, id: pairIndex*2))
-            cards.append(Card(content: content, id: pairIndex*2+1))
+            cards.append(Card(content: content, id: pairIndex*2, cardColor: cardColor))
+            cards.append(Card(content: content, id: pairIndex*2+1, cardColor: cardColor))
         }
     }
 
@@ -56,14 +56,15 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
         var isMatched: Bool = false
         var content: CardContent
         var id: Int
+        var cardColor: Color
     }
 }
 
-struct ThemeButton: View {
+struct ThemeCards: View {
     var theme: String
-    var color: Color
+    var buttonColor: Color
     var systemName: String
-    var numberOfPairs: Int 
+    var numberOfPairs: Int
     var cardColor: Color
     @ObservedObject var viewModel: EmojiMemoryGame
 
@@ -71,15 +72,18 @@ struct ThemeButton: View {
         Button(action: {
             viewModel.model = EmojiMemoryGame.newGame(theme: theme, numberOfPairs: numberOfPairs, cardColor: cardColor)
         }, label: {
+            
             Image(systemName: systemName)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .font(.largeTitle)
-                .foregroundColor(color)
+                .foregroundColor(buttonColor)
         })
         
     }
 }
+
+
 
 
 

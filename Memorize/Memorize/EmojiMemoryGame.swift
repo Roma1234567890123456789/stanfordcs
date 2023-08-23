@@ -9,39 +9,37 @@ import SwiftUI
 
 class EmojiMemoryGame: ObservableObject {
 
-    static var emojis = ["🚕", "🚜", "🏎️", "🚑", "🚓", "🚒", "🛻", "🚗",
-                         "🚁", "✈️", "🚀", "🛸", "🚠", "🚟", "🛩️", "🛰️",
-                         "🛶", "⛵️", "🛟", "🚤", "🛥️", "🛳️", "⛴️", "⚓️"]
-
     static func createEmojis(theme: String) -> [String] {
         switch theme {
             case "cars":
-                return ["🚕", "🚜", "🏎️", "🚑", "🚓", "🚒", "🛻", "🚗"]
+                return ["🚕", "🚜", "🏎️", "🚑", "🚓", "🚒", "🛻", "🚗"].shuffled()
             case "planes":
-                return ["🚁", "✈️", "🚀", "🛸", "🚠", "🚟", "🛩️", "🛰️"]
+                return ["🚁", "✈️", "🚀", "🛸", "🚠", "🚟", "🛩️", "🛰️"].shuffled()
             case "ships":
-                return ["🛶", "⛵️", "🛟", "🚤", "🛥️", "🛳️", "⛴️", "⚓️"]
+                return ["🛶", "⛵️", "🛟", "🚤", "🛥️", "🛳️", "⛴️", "⚓️"].shuffled()
             case "animals":
-                return ["🐗", "🦒", "🐽", "🐎", "🙈", "🐮", "🐶", "🦘"]
+                return ["🐗", "🦒", "🐽", "🐎", "🙈", "🐮", "🐶", "🦘"].shuffled()
             case "reptiles":
-                return ["🦎", "🐢", "🐍", "🐊", "🐸", "🐉", "🦕", "🦖"]
+                return ["🦎", "🐢", "🐍", "🐊", "🐸", "🐉", "🦕", "🦖"].shuffled()
             case "fishes":
-                return ["🐳", "🐋", "🦈", "🐠", "🐡", "🦑", "🐬", "🦞"]
+                return ["🐳", "🐋", "🦈", "🐠", "🐡", "🦑", "🐬", "🦞"].shuffled()
             case "moon":
-                return ["🌕", "🌖", "🌗", "🌘", "🌑", "🌒", "🌓", "🌔"]
+                return ["🌕", "🌖", "🌗", "🌘", "🌑", "🌒", "🌓", "🌔"].shuffled()
             default:
                 return []
         }
     }
-    
+
     static func newGame(theme: String, numberOfPairs: Int, cardColor: Color) -> MemoryGame<String> {
         let emojis = createEmojis(theme: theme)
-        return MemoryGame<String>(numberOfPairsOfCards: 8) { pairIndex in
+        return MemoryGame<String>(numberOfPairsOfCards: numberOfPairs, cardColor: cardColor)
+        { pairIndex in
             emojis[pairIndex]
         }
     }
 
     @Published var model: MemoryGame<String> = newGame(theme: "cars", numberOfPairs: 8, cardColor: .red)
+    
 
     var cards: Array<MemoryGame<String>.Card> {
         model.cards

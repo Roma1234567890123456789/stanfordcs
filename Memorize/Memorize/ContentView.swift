@@ -25,7 +25,7 @@ struct ContentView: View {
         }
         .edgesIgnoringSafeArea(.vertical)
     }
-    
+
     private var cardsScrollView: some View {
         ScrollView {
             LazyVGrid(columns: [GridItem(.adaptive(minimum: 80))]) {
@@ -36,7 +36,7 @@ struct ContentView: View {
                             viewModel.choose(card)
                         }
                 }
-                .foregroundColor(.red)
+                .foregroundColor(.orange) 
             }
         }
     }
@@ -48,13 +48,13 @@ struct ContentView: View {
                 .bold()
             
             HStack {
-                ThemeButton(theme: "cars", color: .red, systemName: "car.circle", numberOfPairs: 8, cardColor: .red, viewModel: viewModel)
-                ThemeButton(theme: "planes", color: .orange, systemName: "airplane.circle", numberOfPairs: 8, cardColor: .orange, viewModel: viewModel)
-                ThemeButton(theme: "ships", color: .yellow, systemName: "sailboat.circle", numberOfPairs: 8, cardColor: .yellow, viewModel: viewModel)
-                ThemeButton(theme: "animals", color: .green, systemName: "pawprint.circle", numberOfPairs: 8, cardColor: .green, viewModel: viewModel)
-                ThemeButton(theme: "reptiles", color: .blue, systemName: "sun.max.circle", numberOfPairs: 8, cardColor: .blue, viewModel: viewModel)
-                ThemeButton(theme: "fishes", color: .blue, systemName: "fish.circle", numberOfPairs: 8, cardColor: .blue, viewModel: viewModel)
-                ThemeButton(theme: "moon", color: .purple, systemName: "moon.circle", numberOfPairs: 8, cardColor: .purple, viewModel: viewModel)
+                ThemeCards(theme: "cars", buttonColor: .red, systemName: "car.circle", numberOfPairs: 4, cardColor: .red, viewModel: viewModel)
+                ThemeCards(theme: "planes", buttonColor: .orange, systemName: "airplane.circle", numberOfPairs: 6, cardColor: .orange, viewModel: viewModel)
+                ThemeCards(theme: "ships", buttonColor: .yellow, systemName: "sailboat.circle", numberOfPairs: 8, cardColor: .yellow, viewModel: viewModel)
+                ThemeCards(theme: "animals", buttonColor: .green, systemName: "pawprint.circle", numberOfPairs: 4, cardColor: .green, viewModel: viewModel)
+                ThemeCards(theme: "reptiles", buttonColor: .mint, systemName: "sun.max.circle", numberOfPairs: 6, cardColor: .mint, viewModel: viewModel)
+                ThemeCards(theme: "fishes", buttonColor: .blue, systemName: "fish.circle", numberOfPairs: 8, cardColor: .blue, viewModel: viewModel)
+                ThemeCards(theme: "moon", buttonColor: .purple, systemName: "moon.circle", numberOfPairs: 4, cardColor: .purple, viewModel: viewModel)
             }
             .padding(.horizontal)
         }
@@ -66,6 +66,7 @@ struct ContentView: View {
 struct CardView: View {
     let card: MemoryGame<String>.Card
     let shape = RoundedRectangle(cornerRadius: 10)
+
     
     var body: some View {
         ZStack {
@@ -79,25 +80,14 @@ struct CardView: View {
             } else if card.isMatched {
                 shape.opacity(0)
             } else {
-                shape.fill()
+                shape.fill().foregroundColor(card.cardColor)
                     .shadow(color: .gray.opacity(0.5), radius: 4, x: 2, y: 2)
             }
         }
         .padding(2)
+        .foregroundColor(.red)
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
