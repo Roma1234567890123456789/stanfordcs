@@ -9,7 +9,7 @@ import SwiftUI
 
 class EmojiMemoryGame: ObservableObject {
 
-    // TODO: Remove below function
+    #warning("Remove below function")
     static func createEmojis(theme: String) -> [String] {
         switch theme {
             case "cars":
@@ -31,6 +31,7 @@ class EmojiMemoryGame: ObservableObject {
         }
     }
 
+    #warning("refactor the below code, se the newGame() method takes only the game theme and nothing else")
     static func newGame(themeName: String, numberOfPairs: Int, cardColor: Color) -> MemoryGame<String> {
         let emojis = createEmojis(theme: themeName)
         return MemoryGame<String>(numberOfPairsOfCards: numberOfPairs, cardColor: cardColor)

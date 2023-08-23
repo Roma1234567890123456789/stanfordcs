@@ -14,7 +14,7 @@ struct GameTheme {
     let cardColor: Color
     let symbolName: String
     
-    // TODO: Game Theme struct (game theme model) should store the emojis array
+    #warning("Game Theme struct (game theme model) should store the emojis array")
     var emojis: [String] = []
     
     func getSymbolName() -> String {

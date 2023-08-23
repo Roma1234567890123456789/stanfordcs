@@ -13,7 +13,7 @@ struct ThemeSelectionButton: View {
     
     var body: some View {
         Button {
-            // TODO: -- refactor the below code, se the newGame() method takes only the game theme and nothing else
+            #warning("refactor the below code, se the newGame() method takes only the game theme and nothing else")
             // Expected result: viewModel.model = EmojiMemoryGame.newGame(theme: theme)
             viewModel.model = EmojiMemoryGame.newGame(themeName: theme.name, numberOfPairs: theme.numberOfPairsOfCards, cardColor: theme.cardColor)
         } label: {
