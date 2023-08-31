@@ -1,15 +1,8 @@
-//
-//  ContentView.swift
-//  Memorize
-//
-//  Created by Котенок Майнкун on 10.07.2023.
-//
-
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var viewModel: EmojiMemoryGame
-    
+    var viewModel: EmojiMemoryGame
+
     var body: some View {
         VStack {
             cardsScrollView
@@ -18,26 +11,28 @@ struct ContentView: View {
             themeSelectionView
         }
         .padding()
-        .background {
+        .background(
             Image("Generic_Animal")
                 .resizable()
                 .scaledToFill()
-        }
+        )
         .edgesIgnoringSafeArea(.vertical)
     }
-
+    
     private var cardsScrollView: some View {
         ScrollView {
             LazyVGrid(columns: [GridItem(.adaptive(minimum: 80))]) {
                 ForEach(viewModel.cards) { card in
-                    CardView(card: card)
+                    CardView(card: card, theme: viewModel.selectedTheme)
                         .aspectRatio(2/3, contentMode: .fit)
                         .onTapGesture {
                             viewModel.choose(card)
                         }
                 }
-                .foregroundColor(.orange) 
             }
+          
+            
+            Spacer(minLength: 50)
         }
     }
     
@@ -46,56 +41,49 @@ struct ContentView: View {
             Text("Choose theme to play")
                 .font(.title)
                 .bold()
+                .padding(.top)
             
             HStack {
-                ThemeSelectionButton(theme: GameTheme(name: "cars", numberOfPairsOfCards: 4, cardColor: .red, symbolName: "car.circle"), viewModel: viewModel)
-                ThemeSelectionButton(theme: GameTheme(name: "ships", numberOfPairsOfCards: 6, cardColor: .blue, symbolName: "sailboat.circle"), viewModel: viewModel)
-                ThemeSelectionButton(theme: GameTheme(name: "planes", numberOfPairsOfCards: 8, cardColor: .orange, symbolName: "airplane.circle"), viewModel: viewModel)
-                ThemeSelectionButton(theme: GameTheme(name: "animals", numberOfPairsOfCards: 6, cardColor: .green, symbolName: "pawprint.circle"), viewModel: viewModel)
-//                ThemeSelectionButton(theme: "reptiles", buttonColor: .mint, systemName: "sun.max.circle", numberOfPairs: 6, cardColor: .mint, viewModel: viewModel)
-//                ThemeSelectionButton(theme: "fishes", buttonColor: .blue, systemName: "fish.circle", numberOfPairs: 8, cardColor: .blue, viewModel: viewModel)
-//                ThemeSelectionButton(theme: "moon", buttonColor: .purple, systemName: "moon.circle", numberOfPairs: 4, cardColor: .purple, viewModel: viewModel)
+                ForEach(viewModel.themeOptions, id: \.name) { theme in
+                    // ThemeSelectionButton()
+                }
             }
             .padding(.horizontal)
         }
         .padding()
-        .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 20))
+        .background(
+            Color(.systemBackground)
+                .opacity(0.9)
+                .cornerRadius(20)
+        )
     }
-}
-
-struct CardView: View {
-    let card: MemoryGame<String>.Card
-    let shape = RoundedRectangle(cornerRadius: 10)
-
     
-    var body: some View {
-        ZStack {
-            if card.isFaceUp {
-                ZStack {
-                    shape.fill().foregroundColor(.white)
-                    shape.strokeBorder(lineWidth: 3)
-                }
-                .shadow(radius: 10)
-                Text(card.content).font(.largeTitle)
-            } else if card.isMatched {
-                shape.opacity(0)
-            } else {
-                shape.fill().foregroundColor(card.cardColor)
-                    .shadow(color: .gray.opacity(0.5), radius: 4, x: 2, y: 2)
+    struct CardView: View {
+        var card: MemoryGame<String>.Card
+        var theme: GameTheme
+ 
+        
+        var body: some View {
+            ZStack {
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(card.isFaceUp ? Color.white : Color.gray)
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(lineWidth: card.isFaceUp ? 3 : 0)
+                    .foregroundColor(theme.cardColor)
+                
+                Text(card.content)
+                    .font(.system(size: 40))
+                    .foregroundColor(card.isFaceUp ? Color.black : Color.white)
+                    .padding()
             }
+            .aspectRatio(2/3, contentMode: .fit)
         }
-        .padding(2)
-        .foregroundColor(.red)
     }
-}
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        let game = EmojiMemoryGame()
-        ContentView(viewModel: game)
-            .preferredColorScheme(.dark)
-        ContentView(viewModel: game)
-            .preferredColorScheme(.light)
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            ContentView(viewModel: EmojiMemoryGame())
+        }
     }
 }
 
